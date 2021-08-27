@@ -54,11 +54,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostModels\PostCreate.cs" />
+    <Compile Include="PostModels\PostDetail.cs" />
+    <Compile Include="PostModels\PostEdit.cs" />
+    <Compile Include="PostModels\PostListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\72HourProject.Data\72HourProject.Data.csproj">
+      <Project>{5A0D27B0-A14F-4D84-A658-B473FA778E97}</Project>
+      <Name>72HourProject.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

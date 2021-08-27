@@ -100,12 +100,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\72HourProject.Models\72HourProject.Models.csproj">
-      <Project>{A7593607-5838-4311-A7B8-AE8D1387AF65}</Project>
-      <Name>72HourProject.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\202108250149314_First migration.resx">
       <DependentUpon>202108250149314_First migration.cs</DependentUpon>
     </EmbeddedResource>
