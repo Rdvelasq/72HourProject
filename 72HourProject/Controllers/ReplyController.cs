@@ -1,4 +1,8 @@
-﻿using System;
+﻿using _72HourProject.Data;
+using _72HourProject.Models;
+using _72HourProject.Services;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,44 +13,45 @@ namespace _72HourProject.Controllers
 {
     public class ReplyController : ApiController
     {
-        private readonly ReplyDbContext _context = new ReplyDbContext();
+        private ReplyService CreateReplyService()
+        {
+            var authorId = Guid.Parse(User.Identity.GetUserId());
+            var replyService = new ReplyService(authorId);
+            return replyService;
+        }
 
         // POST(Create) a Reply to a Comment using a Foreign Key relationship(required)
         [HttpPost]
-        public async Task<IHttpActionResult> CreateReply([FromBody] Reply model)
+        public IHttpActionResult CreateReply(ReplyCreate model)
         {
             if (model is null)
             {
                 return BadRequest("Your request body cannot be empty.");
             }
-            if (ModelState.IsValid)
+
+            var service = CreateReplyService();
+
+            if (!service.CreateReply(model))
             {
-                // Store the model into the database
-                _context.Reply.Add(model);
-                await _context.saveChangesAsync();
-
-                return ok("Your reply is successfully posted!");
-
+                return InternalServerError();
             }
+            return Ok();
 
-            // if the modelstate is not valid
-            return BadRequest(ModelState);
         }
 
+
         //GET Replies By Comment Id(required)
-        // api/Reply/{id
+        // api/Reply/{id}
         [HttpGet]
-        public async Task<IHttpActionResult> GetById([FromUri] int id)
+        public IHttpActionResult GetById(int commentId)
         {
-            Reply reply = await _context.Replys.FindAsync(id);
-            if (reply != null)
             {
+                ReplyService replyService = CreateReplyService();
+                var reply = replyService.GetReplyByCommentId(commentId);
                 return Ok(reply);
             }
 
-            return NotFound();
+
         }
-
-
     }
 }
