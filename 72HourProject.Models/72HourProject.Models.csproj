@@ -64,6 +64,10 @@
     <Compile Include="CommentDetails.cs" />
     <Compile Include="CommentEdit.cs" />
     <Compile Include="CommentListReplies.cs" />
+    <Compile Include="PostModels\PostCreate.cs" />
+    <Compile Include="PostModels\PostDetail.cs" />
+    <Compile Include="PostModels\PostEdit.cs" />
+    <Compile Include="PostModels\PostListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\72HourProject.Data\72HourProject.Data.csproj">
-      <Project>{5a0d27b0-a14f-4d84-a658-b473fa778e97}</Project>
+      <Project>{5A0D27B0-A14F-4D84-A658-B473FA778E97}</Project>
       <Name>72HourProject.Data</Name>
     </ProjectReference>
   </ItemGroup>
