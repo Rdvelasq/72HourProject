@@ -10,7 +10,7 @@ namespace _72HourProject.Data
 {
     public class Reply
     {
-        // 
+        // ...
         [Key]
         public int Id { get; set; }
 
